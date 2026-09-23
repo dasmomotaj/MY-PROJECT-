@@ -115,3 +115,97 @@ conn.close()
 
 print()
 print(f"🎉 Total tools in database: {count}")
+import sqlite3
+
+DB_NAME = "ai_zone.db"
+
+tools = [
+    (
+        "ChatGPT",
+        "chatgpt",
+        "AI Assistant",
+        "🤖",
+        "Writing, learning, brainstorming এবং coding-এর জন্য AI assistant."
+    ),
+    (
+        "Canva",
+        "canva",
+        "Design",
+        "🎨",
+        "Social media graphics, presentations এবং visual content তৈরির জন্য."
+    ),
+    (
+        "CapCut",
+        "capcut",
+        "Video",
+        "🎬",
+        "Reels, Shorts এবং educational video editing-এর জন্য."
+    ),
+    (
+        "Grammarly",
+        "grammarly",
+        "Writing",
+        "✍️",
+        "Grammar, spelling এবং writing উন্নত করার জন্য."
+    ),
+    (
+        "GitHub",
+        "github",
+        "Coding",
+        "💻",
+        "Code hosting এবং web development project-এর জন্য."
+    ),
+    (
+        "Notion",
+        "notion",
+        "Productivity",
+        "📒",
+        "Notes, planning এবং productivity management-এর জন্য."
+    ),
+    (
+        "Adobe Express",
+        "adobe-express",
+        "Design",
+        "🖌️",
+        "Graphics এবং social media content তৈরির জন্য."
+    ),
+    (
+        "VEED",
+        "veed",
+        "Video",
+        "🎥",
+        "Online video editing এবং content creation-এর জন্য."
+    ),
+    (
+        "QuillBot",
+        "quillbot",
+        "Writing",
+        "📝",
+        "Writing এবং text editing-এর জন্য."
+    ),
+    (
+        "CodePen",
+        "codepen",
+        "Coding",
+        "👨‍💻",
+        "HTML, CSS এবং JavaScript practice করার জন্য."
+    )
+]
+
+con = sqlite3.connect(DB_NAME)
+cur = con.cursor()
+
+for tool in tools:
+    cur.execute(
+        """
+        INSERT OR IGNORE INTO tools
+        (name, slug, category, icon, description)
+        VALUES (?, ?, ?, ?, ?)
+        """,
+        tool
+    )
+
+con.commit()
+con.close()
+
+print("✅ 10 AI Tools successfully added!")
