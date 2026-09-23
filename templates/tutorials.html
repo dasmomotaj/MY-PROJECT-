@@ -1,44 +1,63 @@
+
 {% extends "base.html" %}
 
-{% block title %}Tutorials{% endblock %}
+{% block title %}Tutorials - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
     <h1>📚 Tutorials</h1>
-    <p>একদম শুরু থেকে শেখার জন্য সহজ tutorial</p>
+    <p>একদম শুরু থেকে শেখার সহজ tutorial</p>
 </section>
 
 <section class="section">
 
-<div class="cards">
-
-    <div class="card">
-        <div class="icon">🐍</div>
-        <h3>Python</h3>
-        <p>Python-এর basic syntax এবং ছোট project দিয়ে শেখা শুরু করুন।</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🌐</div>
-        <h3>HTML & CSS</h3>
-        <p>নিজের website-এর structure ও design তৈরি করতে শিখুন।</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🔥</div>
-        <h3>Flask</h3>
-        <p>Python দিয়ে ছোট Web Application তৈরি করতে শিখুন।</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🐙</div>
-        <h3>GitHub</h3>
-        <p>Project save, version control এবং GitHub-এ upload করা শিখুন।</p>
-    </div>
-
+<div class="search-box">
+    <input id="tutorialSearch"
+           type="search"
+           placeholder="🔍 Tutorial খুঁজুন..."
+           onkeyup="searchCards('tutorialSearch','tutorialCard')">
 </div>
 
+<div class="cards">
+
+<div class="card tutorialCard">
+    <div class="icon">🐍</div>
+    <h3>Python</h3>
+    <p>Python basic থেকে ছোট project তৈরি করা শিখুন।</p>
+</div>
+
+<div class="card tutorialCard">
+    <div class="icon">🌐</div>
+    <h3>HTML & CSS</h3>
+    <p>Website-এর structure এবং design তৈরি করতে শিখুন।</p>
+</div>
+
+<div class="card tutorialCard">
+    <div class="icon">🔥</div>
+    <h3>Flask</h3>
+    <p>Python দিয়ে Web Application তৈরি করা শিখুন।</p>
+</div>
+
+<div class="card tutorialCard">
+    <div class="icon">🐙</div>
+    <h3>GitHub</h3>
+    <p>Project save, version control এবং GitHub ব্যবহার শিখুন।</p>
+</div>
+
+<div class="card tutorialCard">
+    <div class="icon">📱</div>
+    <h3>Termux</h3>
+    <p>Android ফোনে coding environment তৈরি করার basics শিখুন।</p>
+</div>
+
+<div class="card tutorialCard">
+    <div class="icon">🤖</div>
+    <h3>AI Learning</h3>
+    <p>AI দিয়ে শেখা এবং productivity বাড়ানোর workflow শিখুন।</p>
+</div>
+
+</div>
 </section>
 
 {% endblock %}

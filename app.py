@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -25,11 +26,9 @@ def about():
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     message = None
-
     if request.method == "POST":
-        name = request.form.get("name")
+        name = request.form.get("name", "বন্ধু")
         message = f"ধন্যবাদ {name}! আপনার বার্তা গ্রহণ করা হয়েছে।"
-
     return render_template("contact.html", message=message)
 
 if __name__ == "__main__":

@@ -1,44 +1,69 @@
+
 {% extends "base.html" %}
 
-{% block title %}AI Tools{% endblock %}
+{% block title %}AI Tools - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
     <h1>🤖 AI Tools</h1>
-    <p>AI দিয়ে কাজ সহজ করার কিছু জনপ্রিয় tool</p>
+    <p>আপনার কাজ সহজ করার জন্য AI tools</p>
 </section>
 
 <section class="section">
 
-<div class="cards">
-
-    <div class="card">
-        <div class="icon">💬</div>
-        <h3>ChatGPT</h3>
-        <p>প্রশ্ন, লেখা, শেখা, brainstorming এবং coding-এর জন্য AI assistant.</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🎨</div>
-        <h3>Design Tools</h3>
-        <p>Social media post ও visual content তৈরির জন্য design tools ব্যবহার করুন।</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">🎬</div>
-        <h3>AI Video</h3>
-        <p>Short video, Reel এবং educational content তৈরির workflow শিখুন।</p>
-    </div>
-
-    <div class="card">
-        <div class="icon">✍️</div>
-        <h3>AI Writing</h3>
-        <p>Caption, article, script এবং content ideas তৈরি করতে AI ব্যবহার করুন।</p>
-    </div>
-
+<div class="search-box">
+    <input id="toolSearch"
+           type="search"
+           placeholder="🔍 AI Tool খুঁজুন..."
+           onkeyup="searchCards('toolSearch','toolCard')">
 </div>
 
+<div class="cards">
+
+<div class="card toolCard">
+    <div class="icon">💬</div>
+    <h3>ChatGPT</h3>
+    <p>Writing, learning, brainstorming এবং coding-এর জন্য AI assistant.</p>
+    <span class="tag">AI Assistant</span>
+</div>
+
+<div class="card toolCard">
+    <div class="icon">🎨</div>
+    <h3>Design AI</h3>
+    <p>Social media graphics এবং visual content তৈরির workflow.</p>
+    <span class="tag">Design</span>
+</div>
+
+<div class="card toolCard">
+    <div class="icon">🎬</div>
+    <h3>AI Video</h3>
+    <p>Reels, Shorts এবং educational video তৈরির জন্য AI workflow.</p>
+    <span class="tag">Video</span>
+</div>
+
+<div class="card toolCard">
+    <div class="icon">✍️</div>
+    <h3>AI Writing</h3>
+    <p>Caption, script, article এবং content ideas তৈরি করুন।</p>
+    <span class="tag">Writing</span>
+</div>
+
+<div class="card toolCard">
+    <div class="icon">💻</div>
+    <h3>AI Coding</h3>
+    <p>Code শেখা, debugging এবং project planning-এ AI ব্যবহার করুন।</p>
+    <span class="tag">Coding</span>
+</div>
+
+<div class="card toolCard">
+    <div class="icon">🎙️</div>
+    <h3>AI Voice</h3>
+    <p>Educational এবং social media content-এর voice workflow শিখুন।</p>
+    <span class="tag">Audio</span>
+</div>
+
+</div>
 </section>
 
 {% endblock %}

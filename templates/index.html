@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}Home - AI Zone বাংলা{% endblock %}
@@ -5,7 +6,7 @@
 {% block content %}
 
 <section class="hero">
-    <div>
+    <div class="hero-content">
         <span class="badge">🚀 Learn AI in Bangla</span>
 
         <h1>
@@ -20,19 +21,13 @@
         </p>
 
         <div class="buttons">
-            <a class="btn primary" href="/tools">
-                🤖 AI Tools দেখুন
-            </a>
-
-            <a class="btn secondary" href="/tutorials">
-                📚 Tutorials
-            </a>
+            <a class="btn primary" href="/tools">🤖 AI Tools</a>
+            <a class="btn secondary" href="/tutorials">📚 Tutorials</a>
         </div>
     </div>
 </section>
 
 <section class="section">
-
     <h2>আমরা কী শেখাই?</h2>
 
     <div class="cards">
@@ -40,32 +35,34 @@
         <div class="card">
             <div class="icon">🤖</div>
             <h3>AI Tools</h3>
-            <p>
-                বিভিন্ন AI tool কীভাবে ব্যবহার করতে হয়
-                তা সহজভাবে শিখুন।
-            </p>
+            <p>AI tools কীভাবে ব্যবহার করতে হয় তা সহজভাবে শিখুন।</p>
         </div>
 
         <div class="card">
             <div class="icon">💻</div>
             <h3>Web Development</h3>
-            <p>
-                HTML, CSS, Python এবং Flask দিয়ে
-                Web App তৈরি শিখুন।
-            </p>
+            <p>HTML, CSS, Python এবং Flask দিয়ে Web App তৈরি শিখুন।</p>
         </div>
 
         <div class="card">
             <div class="icon">📱</div>
             <h3>Social Media</h3>
-            <p>
-                Social Media content তৈরি ও
-                digital skills সম্পর্কে জানুন।
-            </p>
+            <p>Facebook, Instagram ও Short Video content সম্পর্কে জানুন।</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>Digital Skills</h3>
+            <p>নতুন digital skills শেখার সহজ resources খুঁজে নিন।</p>
         </div>
 
     </div>
+</section>
 
+<section class="cta">
+    <h2>🚀 আজ থেকেই শেখা শুরু করুন</h2>
+    <p>AI এবং Technology-কে সহজ বাংলায় বুঝুন।</p>
+    <a class="btn primary" href="/tools">Explore AI Tools</a>
 </section>
 
 {% endblock %}
