@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}AI Tools{% endblock %}
@@ -9,90 +8,76 @@
 
 <h1>🤖 AI Tools</h1>
 
-<p>
-Useful AI tools এবং তাদের ব্যবহার সম্পর্কে জানুন
-</p>
+<p>AI tools খুঁজুন এবং ব্যবহার সম্পর্কে জানুন</p>
 
 </section>
 
 <section class="section">
 
-<div class="search-box">
+<form class="search-box" method="GET">
 
 <input
-id="toolSearch"
 type="search"
-placeholder="🔍 AI Tool খুঁজুন..."
-onkeyup="searchCards('toolSearch','toolCard')">
+name="q"
+value="{{ search }}"
+placeholder="🔍 Tool খুঁজুন...">
+
+<button type="submit">
+Search
+</button>
+
+</form>
+
+<div class="category-row">
+
+<a href="/tools">All</a>
+
+{% for category in categories %}
+
+<a href="/tools?category={{ category['category'] }}">
+{{ category['category'] }}
+</a>
+
+{% endfor %}
 
 </div>
 
 <div class="cards">
 
-<div class="card toolCard">
+{% for tool in tools %}
 
-<div class="icon">🤖</div>
+<div class="card">
 
-<h3>ChatGPT</h3>
+<div class="icon">
+{{ tool['icon'] }}
+</div>
+
+<h3>
+{{ tool['name'] }}
+</h3>
 
 <p>
-Writing, learning, coding এবং brainstorming-এর জন্য AI assistant.
+{{ tool['description'] }}
 </p>
 
-<span class="tag">AI Assistant</span>
+<span class="tag">
+{{ tool['category'] }}
+</span>
 
 <br>
 
 <a class="btn primary"
-href="/tool/chatgpt">
+href="/tool/{{ tool['slug'] }}">
 Details →
 </a>
 
 </div>
 
+{% else %}
 
-<div class="card toolCard">
+<p>কোনো tool পাওয়া যায়নি।</p>
 
-<div class="icon">🎨</div>
-
-<h3>AI Design Tools</h3>
-
-<p>
-Social media graphics ও visual content তৈরি করুন।
-</p>
-
-<span class="tag">Design</span>
-
-<br>
-
-<a class="btn primary"
-href="/tool/design">
-Details →
-</a>
-
-</div>
-
-
-<div class="card toolCard">
-
-<div class="icon">🎬</div>
-
-<h3>AI Video Tools</h3>
-
-<p>
-Reels, Shorts এবং educational video তৈরির workflow.
-</p>
-
-<span class="tag">Video</span>
-
-<br>
-
-<a class="btn primary"
-href="/tool/video">
-Details →
-</a>
-
-</div>
+{% endfor %}
 
 </div>
 

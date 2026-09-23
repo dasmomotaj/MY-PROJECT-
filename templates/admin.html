@@ -1,7 +1,6 @@
-
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Admin Dashboard{% endblock %}
 
 {% block content %}
 
@@ -9,31 +8,53 @@
 
 <h1>📊 Admin Dashboard</h1>
 
-<p>Website activity</p>
+<p>
+<a href="/admin/logout">Logout</a>
+</p>
 
 </section>
 
 <section class="section">
 
-<h2>🔗 Tool Clicks</h2>
+<div class="stats">
 
-<div class="cards">
+<div>
+<strong>{{ users }}</strong>
+<span>Users</span>
+</div>
 
-{% for tool,count in clicks %}
+<div>
+<strong>{{ visits }}</strong>
+<span>Page Visits</span>
+</div>
 
-<div class="card">
-
-<h3>{{ tool }}</h3>
-
-<p>
-Clicks: <strong>{{ count }}</strong>
-</p>
+<div>
+<strong>{{ messages }}</strong>
+<span>Messages</span>
+</div>
 
 </div>
 
-{% else %}
 
-<p>এখনো কোনো click নেই।</p>
+<h2 style="margin-top:50px;">
+🔗 Affiliate Clicks
+</h2>
+
+<div class="cards">
+
+{% for tool in clicks %}
+
+<div class="card">
+
+<h3>
+{{ tool['name'] }}
+</h3>
+
+<p>
+Clicks: <strong>{{ tool['clicks'] }}</strong>
+</p>
+
+</div>
 
 {% endfor %}
 
@@ -41,20 +62,58 @@ Clicks: <strong>{{ count }}</strong>
 
 
 <h2 style="margin-top:50px;">
-📩 Messages
+📰 Create Blog Post
 </h2>
 
-{% for name,email,message,date in messages %}
+<div class="auth-box">
 
-<div class="card" style="margin-top:15px;">
+<form method="POST"
+action="/admin/blog">
 
-<h3>{{ name }}</h3>
+<input
+name="title"
+placeholder="Blog Title"
+required>
 
-<p>{{ email }}</p>
+<textarea
+name="content"
+rows="8"
+placeholder="Blog content"
+required></textarea>
 
-<p>{{ message }}</p>
+<button type="submit">
+Publish Blog
+</button>
 
-<small>{{ date }}</small>
+</form>
+
+</div>
+
+
+<h2 style="margin-top:50px;">
+📩 Recent Messages
+</h2>
+
+{% for message in recent_messages %}
+
+<div class="card"
+style="margin-top:15px;">
+
+<h3>
+{{ message['name'] }}
+</h3>
+
+<p>
+{{ message['email'] }}
+</p>
+
+<p>
+{{ message['message'] }}
+</p>
+
+<small>
+{{ message['created_at'] }}
+</small>
 
 </div>
 

@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}Contact{% endblock %}
@@ -15,11 +14,11 @@
 
 <section class="section">
 
-<div class="contact-box">
+<div class="auth-box">
 
 {% if message %}
 
-<div class="success">
+<div class="flash success">
 {{ message }}
 </div>
 
@@ -31,22 +30,19 @@
 type="text"
 name="name"
 placeholder="আপনার নাম"
-required
->
+required>
 
 <input
 type="email"
 name="email"
 placeholder="আপনার Email"
-required
->
+required>
 
 <textarea
 name="message"
 placeholder="আপনার Message"
 rows="6"
-required
-></textarea>
+required></textarea>
 
 <button type="submit">
 Send Message 🚀

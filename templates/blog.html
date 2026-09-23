@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}Blog{% endblock %}
@@ -9,54 +8,41 @@
 
 <h1>📰 AI Zone বাংলা Blog</h1>
 
-<p>AI ও Technology সম্পর্কে সহজ বাংলা লেখা</p>
+<p>AI ও Technology নিয়ে সহজ বাংলা articles</p>
 
 </section>
 
 <section class="section">
 
-<div class="cards">
+{% for post in posts %}
+
+<div class="card blog-card">
+
+<h2>{{ post['title'] }}</h2>
+
+<p>
+{{ post['content'] }}
+</p>
+
+<small>
+{{ post['created_at'] }}
+</small>
+
+</div>
+
+{% else %}
 
 <div class="card">
 
-<div class="icon">🤖</div>
-
-<h3>ChatGPT কী?</h3>
+<h3>🚀 প্রথম Blog শীঘ্রই আসছে</h3>
 
 <p>
-ChatGPT কীভাবে শেখা ও productivity-তে ব্যবহার করা যায়
-তা সহজভাবে জানুন।
+Admin dashboard থেকে Blog post তৈরি করা যাবে।
 </p>
 
 </div>
 
-
-<div class="card">
-
-<div class="icon">🎨</div>
-
-<h3>AI দিয়ে Design</h3>
-
-<p>
-Social media content-এর জন্য AI design workflow সম্পর্কে জানুন।
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">🎬</div>
-
-<h3>AI দিয়ে Video</h3>
-
-<p>
-Short educational video তৈরির basic workflow শিখুন।
-</p>
-
-</div>
-
-</div>
+{% endfor %}
 
 </section>
 

@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+ai_zone.db
+secret.key
+.env

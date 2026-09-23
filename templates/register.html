@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+<h1>👤 Register</h1>
+</section>
+
+<section class="section">
+
+<div class="auth-box">
+
+<form method="POST">
+
+<input
+name="username"
+placeholder="Username"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input
+type="password"
+name="password"
+placeholder="Password - minimum 6 characters"
+required>
+
+<button type="submit">
+Create Account
+</button>
+
+</form>
+
+<p>
+Already registered?
+<a href="/login">Login</a>
+</p>
+
+</div>
+
+</section>
+
+{% endblock %}

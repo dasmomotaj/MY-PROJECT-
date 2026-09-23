@@ -1,18 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-content="AI Zone বাংলা - AI Tools, Tutorials, Social Media এবং Digital Skills">
+content="AI Zone বাংলা - AI, Technology এবং Digital Skills শেখার platform">
 
 <title>{% block title %}AI Zone বাংলা{% endblock %}</title>
 
 <link rel="stylesheet"
 href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
@@ -29,11 +32,19 @@ onclick="toggleMenu()">☰</button>
 <nav id="navMenu">
 
 <a href="/">🏠 Home</a>
-<a href="/tools">🤖 AI Tools</a>
+<a href="/tools">🤖 Tools</a>
 <a href="/tutorials">📚 Tutorials</a>
 <a href="/blog">📰 Blog</a>
 <a href="/services">🛠️ Services</a>
-<a href="/about">ℹ️ About</a>
+
+{% if session.get("user_id") %}
+<a href="/profile">👤 Profile</a>
+<a href="/logout">Logout</a>
+{% else %}
+<a href="/login">Login</a>
+<a href="/register">Register</a>
+{% endif %}
+
 <a href="/contact">📩 Contact</a>
 
 <button class="theme-btn"
@@ -42,6 +53,26 @@ onclick="toggleTheme()">🌙</button>
 </nav>
 
 </header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+{% if messages %}
+
+<div class="flash-container">
+
+{% for category, message in messages %}
+
+<div class="flash {{ category }}">
+{{ message }}
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endwith %}
 
 <main>
 
@@ -69,4 +100,5 @@ AI • Technology • Web Development • Social Media
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
+
 </html>

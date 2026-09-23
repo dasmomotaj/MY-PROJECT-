@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+<h1>👤 {{ session['username'] }}</h1>
+
+<p>Your AI Zone বাংলা profile</p>
+
+</section>
+
+<section class="section">
+
+<h2>❤️ Favorite Tools</h2>
+
+<div class="cards">
+
+{% for tool in favorites %}
+
+<div class="card">
+
+<div class="icon">
+{{ tool['icon'] }}
+</div>
+
+<h3>
+{{ tool['name'] }}
+</h3>
+
+<p>
+{{ tool['description'] }}
+</p>
+
+<a class="btn primary"
+href="/tool/{{ tool['slug'] }}">
+Open
+</a>
+
+</div>
+
+{% else %}
+
+<p>
+এখনো কোনো favorite tool নেই।
+</p>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}

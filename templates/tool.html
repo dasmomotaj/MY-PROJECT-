@@ -1,17 +1,19 @@
-
 {% extends "base.html" %}
 
-{% block title %}{{ tool.name }}{% endblock %}
+{% block title %}{{ tool['name'] }}{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
 
 <h1>
-{{ tool.icon }} {{ tool.name }}
+{{ tool['icon'] }}
+{{ tool['name'] }}
 </h1>
 
-<p>{{ tool.category }}</p>
+<p>
+{{ tool['category'] }}
+</p>
 
 </section>
 
@@ -19,23 +21,88 @@
 
 <div class="about-box">
 
-<h2>{{ tool.icon }} {{ tool.name }}</h2>
+<h2>
+{{ tool['icon'] }} {{ tool['name'] }}
+</h2>
 
 <p>
-{{ tool.description }}
+{{ tool['description'] }}
 </p>
+
+<div class="rating">
+
+⭐ Average:
+{% if rating['average'] %}
+{{ "%.1f"|format(rating['average']) }}/5
+{% else %}
+No rating yet
+{% endif %}
+
+</div>
 
 <div class="notice">
 
-💡 AI Zone বাংলা এই tool সম্পর্কে
-শিক্ষামূলক তথ্য ও ব্যবহারবিধি প্রদান করছে।
+💡 Educational information:
+AI Zone বাংলা এই tool-এর ব্যবহার সম্পর্কে
+শিক্ষামূলক information প্রদান করছে।
 
 </div>
 
 <a class="btn primary"
-href="/go/{{ slug }}">
+href="/go/{{ tool['slug'] }}">
 Visit Tool →
 </a>
+
+{% if session.get("user_id") %}
+
+<form method="POST"
+action="/favorite/{{ tool['id'] }}"
+style="margin-top:15px;">
+
+<button type="submit">
+
+{% if favorite %}
+❤️ Remove Favorite
+{% else %}
+🤍 Add Favorite
+{% endif %}
+
+</button>
+
+</form>
+
+<h3 style="margin-top:30px;">
+⭐ আপনার Rating
+</h3>
+
+<form method="POST"
+action="/rate/{{ tool['id'] }}"
+class="rating-form">
+
+<select name="rating">
+
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
+
+</select>
+
+<button type="submit">
+Save Rating
+</button>
+
+</form>
+
+{% else %}
+
+<p style="margin-top:20px;">
+Rating/Favorite ব্যবহার করতে
+<a href="/login">Login</a> করুন।
+</p>
+
+{% endif %}
 
 </div>
 

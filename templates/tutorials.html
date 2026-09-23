@@ -1,63 +1,59 @@
-
 {% extends "base.html" %}
 
-{% block title %}Tutorials - AI Zone বাংলা{% endblock %}
+{% block title %}Tutorials{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
-    <h1>📚 Tutorials</h1>
-    <p>একদম শুরু থেকে শেখার সহজ tutorial</p>
+
+<h1>📚 Tutorials</h1>
+
+<p>শুরু থেকে শেখার সহজ resources</p>
+
 </section>
 
 <section class="section">
 
-<div class="search-box">
-    <input id="tutorialSearch"
-           type="search"
-           placeholder="🔍 Tutorial খুঁজুন..."
-           onkeyup="searchCards('tutorialSearch','tutorialCard')">
-</div>
-
 <div class="cards">
 
-<div class="card tutorialCard">
-    <div class="icon">🐍</div>
-    <h3>Python</h3>
-    <p>Python basic থেকে ছোট project তৈরি করা শিখুন।</p>
+<div class="card">
+<div class="icon">🐍</div>
+<h3>Python</h3>
+<p>Python basics এবং ছোট project.</p>
 </div>
 
-<div class="card tutorialCard">
-    <div class="icon">🌐</div>
-    <h3>HTML & CSS</h3>
-    <p>Website-এর structure এবং design তৈরি করতে শিখুন।</p>
+<div class="card">
+<div class="icon">🌐</div>
+<h3>HTML & CSS</h3>
+<p>Website structure এবং design.</p>
 </div>
 
-<div class="card tutorialCard">
-    <div class="icon">🔥</div>
-    <h3>Flask</h3>
-    <p>Python দিয়ে Web Application তৈরি করা শিখুন।</p>
+<div class="card">
+<div class="icon">🔥</div>
+<h3>Flask</h3>
+<p>Python দিয়ে web application.</p>
 </div>
 
-<div class="card tutorialCard">
-    <div class="icon">🐙</div>
-    <h3>GitHub</h3>
-    <p>Project save, version control এবং GitHub ব্যবহার শিখুন।</p>
+<div class="card">
+<div class="icon">🐙</div>
+<h3>GitHub</h3>
+<p>Project version control এবং publishing.</p>
 </div>
 
-<div class="card tutorialCard">
-    <div class="icon">📱</div>
-    <h3>Termux</h3>
-    <p>Android ফোনে coding environment তৈরি করার basics শিখুন।</p>
+<div class="card">
+<div class="icon">📱</div>
+<h3>Termux</h3>
+<p>Android-এ coding environment.</p>
 </div>
 
-<div class="card tutorialCard">
-    <div class="icon">🤖</div>
-    <h3>AI Learning</h3>
-    <p>AI দিয়ে শেখা এবং productivity বাড়ানোর workflow শিখুন।</p>
+<div class="card">
+<div class="icon">🤖</div>
+<h3>AI Learning</h3>
+<p>AI দিয়ে productivity বাড়ানোর workflow.</p>
 </div>
 
 </div>
+
 </section>
 
 {% endblock %}
