@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ tool.name }}{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+<h1>
+{{ tool.icon }} {{ tool.name }}
+</h1>
+
+<p>{{ tool.category }}</p>
+
+</section>
+
+<section class="section">
+
+<div class="about-box">
+
+<h2>{{ tool.icon }} {{ tool.name }}</h2>
+
+<p>
+{{ tool.description }}
+</p>
+
+<div class="notice">
+
+💡 AI Zone বাংলা এই tool সম্পর্কে
+শিক্ষামূলক তথ্য ও ব্যবহারবিধি প্রদান করছে।
+
+</div>
+
+<a class="btn primary"
+href="/go/{{ slug }}">
+Visit Tool →
+</a>
+
+</div>
+
+</section>
+
+{% endblock %}
