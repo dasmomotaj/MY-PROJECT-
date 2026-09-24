@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from datetime import datetime
 import secrets
 from pathlib import Path
 from functools import wraps
@@ -1581,7 +1582,8 @@ def admin_delete_tool(tool_id):
         flash("Tool পাওয়া যায়নি।", "warning")
         return redirect(url_for("admin_tools"))
 
-    backup_con = sqlite3.connect("ai_zone_backup.db")
+    backup_file = "ai_zone_backup_" + datetime.now().strftime("%Y%m%d_%H%M%S") + ".db"
+    backup_con = sqlite3.connect(backup_file)
     con.backup(backup_con)
     backup_con.close()
 
