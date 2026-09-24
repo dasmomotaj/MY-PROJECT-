@@ -27,6 +27,13 @@ from werkzeug.security import (
 
 app = Flask(__name__)
 
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    data = request.get_json(silent=True) or {}
+    print("Webhook received:", data)
+    return {"success": True, "received": data}, 200
+
+
 SECRET_FILE = Path("secret.key")
 
 if SECRET_FILE.exists():
