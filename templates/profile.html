@@ -1,55 +1,104 @@
 {% extends "base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Profile - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
 
-<h1>👤 {{ session['username'] }}</h1>
+    <div class="tool-big-icon">
+        👤
+    </div>
 
-<p>Your AI Zone বাংলা profile</p>
+    <h1>{{ session['username'] }}</h1>
+
+    <p>
+        আপনার AI Zone বাংলা profile
+    </p>
 
 </section>
 
+
 <section class="section">
 
-<h2>❤️ Favorite Tools</h2>
+    <div class="profile-heading">
 
-<div class="cards">
+        <div>
+            <h2>❤️ Favorite Tools</h2>
 
-{% for tool in favorites %}
+            <p>
+                আপনার পছন্দের AI Tools এখানে থাকবে।
+            </p>
+        </div>
 
-<div class="card">
+        <a class="btn primary"
+           href="/tools">
+            🤖 Browse Tools
+        </a>
 
-<div class="icon">
-{{ tool['icon'] }}
-</div>
+    </div>
 
-<h3>
-{{ tool['name'] }}
-</h3>
 
-<p>
-{{ tool['description'] }}
-</p>
+    {% if favorites %}
 
-<a class="btn primary"
-href="/tool/{{ tool['slug'] }}">
-Open
-</a>
+        <div class="cards">
 
-</div>
+            {% for tool in favorites %}
 
-{% else %}
+                <div class="card">
 
-<p>
-এখনো কোনো favorite tool নেই।
-</p>
+                    <div class="icon">
+                        {{ tool['icon'] }}
+                    </div>
 
-{% endfor %}
+                    <h3>
+                        {{ tool['name'] }}
+                    </h3>
 
-</div>
+                    <p>
+                        {{ tool['description'] }}
+                    </p>
+
+                    <span class="tag">
+                        {{ tool['category'] }}
+                    </span>
+
+                    <a class="btn primary"
+                       href="/tool/{{ tool['slug'] }}">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                🤍
+            </div>
+
+            <h3>
+                এখনো কোনো Favorite Tool নেই
+            </h3>
+
+            <p>
+                Tools page থেকে আপনার পছন্দের Tool
+                Favorite করে এখানে রাখতে পারবেন।
+            </p>
+
+            <a class="btn primary"
+               href="/tools">
+                🤖 Explore AI Tools
+            </a>
+
+        </div>
+
+    {% endif %}
 
 </section>
 

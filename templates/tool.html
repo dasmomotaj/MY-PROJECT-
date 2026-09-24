@@ -1,110 +1,121 @@
 {% extends "base.html" %}
 
-{% block title %}{{ tool['name'] }}{% endblock %}
+{% block title %}{{ tool['name'] }} - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
-<section class="page-header">
+<section class="page-header tool-header">
 
-<h1>
-{{ tool['icon'] }}
-{{ tool['name'] }}
-</h1>
+    <div class="tool-big-icon">
+        {{ tool['icon'] }}
+    </div>
 
-<p>
-{{ tool['category'] }}
-</p>
+    <h1>{{ tool['name'] }}</h1>
+
+    <p>{{ tool['category'] }}</p>
 
 </section>
 
 <section class="section">
 
-<div class="about-box">
+    <div class="about-box tool-details">
 
-<h2>
-{{ tool['icon'] }} {{ tool['name'] }}
-</h2>
+        <span class="tag">
+            {{ tool['category'] }}
+        </span>
 
-<p>
-{{ tool['description'] }}
-</p>
+        <h2>
+            {{ tool['icon'] }} {{ tool['name'] }}
+        </h2>
 
-<div class="rating">
+        <p class="tool-description">
+            {{ tool['description'] }}
+        </p>
 
-⭐ Average:
-{% if rating['average'] %}
-{{ "%.1f"|format(rating['average']) }}/5
-{% else %}
-No rating yet
-{% endif %}
+        <div class="rating">
+            ⭐ Average Rating:
+            {% if rating['average'] %}
+                <strong>{{ "%.1f"|format(rating['average']) }}/5</strong>
+            {% else %}
+                <span>No rating yet</span>
+            {% endif %}
+        </div>
 
-</div>
+        <div class="notice">
+            💡 <strong>Educational Information</strong><br>
+            AI Zone বাংলা এই Tool-এর ব্যবহার সম্পর্কে
+            শিক্ষামূলক তথ্য প্রদান করছে।
+        </div>
 
-<div class="notice">
+        <div class="tool-actions">
 
-💡 Educational information:
-AI Zone বাংলা এই tool-এর ব্যবহার সম্পর্কে
-শিক্ষামূলক information প্রদান করছে।
+            <a class="btn primary"
+               href="/go/{{ tool['slug'] }}">
+                🚀 Visit Tool
+            </a>
 
-</div>
+            <a class="btn"
+               href="/tools">
+                ← Back to Tools
+            </a>
 
-<a class="btn primary"
-href="/go/{{ tool['slug'] }}">
-Visit Tool →
-</a>
+        </div>
 
-{% if session.get("user_id") %}
+        {% if session.get("user_id") %}
 
-<form method="POST"
-action="/favorite/{{ tool['id'] }}"
-style="margin-top:15px;">
+            <div class="user-actions">
 
-<button type="submit">
+                <form method="POST"
+                      action="/favorite/{{ tool['id'] }}">
 
-{% if favorite %}
-❤️ Remove Favorite
-{% else %}
-🤍 Add Favorite
-{% endif %}
+                    <button type="submit">
 
-</button>
+                        {% if favorite %}
+                            ❤️ Remove Favorite
+                        {% else %}
+                            🤍 Add Favorite
+                        {% endif %}
 
-</form>
+                    </button>
 
-<h3 style="margin-top:30px;">
-⭐ আপনার Rating
-</h3>
+                </form>
 
-<form method="POST"
-action="/rate/{{ tool['id'] }}"
-class="rating-form">
+                <h3>⭐ আপনার Rating</h3>
 
-<select name="rating">
+                <form method="POST"
+                      action="/rate/{{ tool['id'] }}"
+                      class="rating-form">
 
-<option value="5">⭐⭐⭐⭐⭐</option>
-<option value="4">⭐⭐⭐⭐</option>
-<option value="3">⭐⭐⭐</option>
-<option value="2">⭐⭐</option>
-<option value="1">⭐</option>
+                    <select name="rating">
 
-</select>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
 
-<button type="submit">
-Save Rating
-</button>
+                    </select>
 
-</form>
+                    <button type="submit">
+                        Save Rating
+                    </button>
 
-{% else %}
+                </form>
 
-<p style="margin-top:20px;">
-Rating/Favorite ব্যবহার করতে
-<a href="/login">Login</a> করুন।
-</p>
+            </div>
 
-{% endif %}
+        {% else %}
 
-</div>
+            <div class="login-notice">
+
+                🔐 Favorite ও Rating ব্যবহার করতে
+                <a href="/login">Login</a> করুন।
+
+            </div>
+
+        {% endif %}
+
+    </div>
 
 </section>
 

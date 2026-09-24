@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Manage AI Tools - AI Zone বাংলা{% endblock %}
+
+{% block content %}
+
+<section class="page-header admin-header">
+
+    <div class="tool-big-icon">🤖</div>
+
+    <h1>Manage AI Tools</h1>
+
+    <p>AI Zone বাংলা-এর সকল Tools পরিচালনা করুন</p>
+
+    <div class="admin-actions">
+
+        <a class="btn secondary" href="/admin">
+            ← Admin Dashboard
+        </a>
+
+        <a class="btn primary" href="/admin/tools/add">
+            ➕ Add Tool
+        </a>
+
+        <a class="btn primary" href="/tools" target="_blank">
+            🌐 View Tools
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="admin-section-title">
+
+        <h2>🤖 All AI Tools</h2>
+
+        <p>
+            মোট {{ tools|length }}টি Tool বর্তমানে Database-এ আছে।
+        </p>
+
+    </div>
+
+
+    {% if tools %}
+
+    <div class="cards">
+
+        {% for tool in tools %}
+
+        <div class="card admin-tool-card">
+
+            <div class="icon">
+                {{ tool['icon'] }}
+            </div>
+
+            <h3>
+                {{ tool['name'] }}
+            </h3>
+
+            <span class="tag">
+                {{ tool['category'] }}
+            </span>
+
+            <p>
+                {{ tool['description'] }}
+            </p>
+
+            <div class="admin-tool-info">
+
+                <div>
+                    <strong>Slug</strong>
+                    <span>{{ tool['slug'] }}</span>
+                </div>
+
+                <div>
+                    <strong>Clicks</strong>
+                    <span>🔗 {{ tool['clicks'] }}</span>
+                </div>
+
+            </div>
+
+            <div class="tool-actions">
+
+                <a
+                    class="btn primary"
+                    href="/tool/{{ tool['slug'] }}"
+                    target="_blank"
+                >
+                    👁️ View
+                </a>
+
+                <a
+                    class="btn"
+                    href="/admin/tools/edit/{{ tool['id'] }}"
+                >
+                    ✏️ Edit
+                </a>
+
+                {% if tool['affiliate_url'] and tool['affiliate_url'] != '#' %}
+
+                <a
+                    class="btn"
+                    href="{{ tool['affiliate_url'] }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔗 Official Link
+                </a>
+
+                {% else %}
+
+                <span class="btn disabled">
+                    🔗 No Link
+                </span>
+
+                {% endif %}
+
+                <form
+                    method="POST"
+                    action="/admin/tools/delete/{{ tool['id'] }}"
+                    onsubmit="return confirm('এই Tool-টি কি সত্যিই মুছে ফেলতে চান?');"
+                    style="margin-top:10px;"
+                >
+                    <button
+                        type="submit"
+                        class="btn"
+                        style="width:100%;"
+                    >
+                        🗑️ Delete Tool
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-icon">🤖</div>
+
+        <h3>No Tools Found</h3>
+
+        <p>Database-এ এখন কোনো Tool নেই।</p>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

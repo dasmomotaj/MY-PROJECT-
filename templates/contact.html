@@ -1,56 +1,278 @@
 {% extends "base.html" %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Contact - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
+<!-- PAGE HEADER -->
 <section class="page-header">
 
-<h1>📩 Contact</h1>
+    <div class="tool-big-icon">
+        📩
+    </div>
 
-<p>আপনার message পাঠান</p>
+    <h1>যোগাযোগ করুন</h1>
+
+    <p>
+        AI Zone বাংলা সম্পর্কে আপনার প্রশ্ন,
+        মতামত বা message পাঠাতে পারেন।
+    </p>
 
 </section>
 
+
+<!-- CONTACT SECTION -->
 <section class="section">
 
-<div class="auth-box">
+    <div class="contact-layout">
 
-{% if message %}
+        <!-- INFO -->
+        <div class="about-box contact-info">
 
-<div class="flash success">
-{{ message }}
-</div>
+            <span class="tag">
+                💬 Contact
+            </span>
 
-{% endif %}
+            <h2>
+                আপনার মতামত গুরুত্বপূর্ণ
+            </h2>
 
-<form method="POST">
+            <p>
+                Website-এর কোনো সমস্যা, suggestion
+                অথবা learning-related প্রশ্ন থাকলে
+                message পাঠাতে পারেন।
+            </p>
 
-<input
-type="text"
-name="name"
-placeholder="আপনার নাম"
-required>
+            <div class="contact-item">
 
-<input
-type="email"
-name="email"
-placeholder="আপনার Email"
-required>
+                <span class="contact-icon">
+                    🤖
+                </span>
 
-<textarea
-name="message"
-placeholder="আপনার Message"
-rows="6"
-required></textarea>
+                <div>
+                    <strong>
+                        AI Zone বাংলা
+                    </strong>
 
-<button type="submit">
-Send Message 🚀
-</button>
+                    <p>
+                        AI • Technology • Digital Skills
+                    </p>
+                </div>
 
-</form>
+            </div>
 
-</div>
+
+            <div class="contact-item">
+
+                <span class="contact-icon">
+                    📚
+                </span>
+
+                <div>
+                    <strong>
+                        Learning Support
+                    </strong>
+
+                    <p>
+                        Tutorials এবং AI Tools সম্পর্কে
+                        আপনার প্রশ্ন জানাতে পারেন।
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span class="contact-icon">
+                    💡
+                </span>
+
+                <div>
+                    <strong>
+                        Suggestions
+                    </strong>
+
+                    <p>
+                        নতুন feature বা content idea
+                        share করতে পারেন।
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORM -->
+        <div class="auth-box contact-form-box">
+
+            {% if message %}
+
+                <div class="flash success">
+                    {{ message }}
+                </div>
+
+            {% endif %}
+
+
+            <h2>
+                ✉️ Message পাঠান
+            </h2>
+
+            <p class="form-description">
+                নিচের formটি পূরণ করুন।
+            </p>
+
+
+            <form method="POST">
+
+                <label for="contact-name">
+                    👤 আপনার নাম
+                </label>
+
+                <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    placeholder="আপনার নাম লিখুন"
+                    autocomplete="name"
+                    required>
+
+
+                <label for="contact-email">
+                    📧 Email
+                </label>
+
+                <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    placeholder="আপনার Email লিখুন"
+                    autocomplete="email"
+                    required>
+
+
+                <label for="contact-message">
+                    💬 Message
+                </label>
+
+                <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="আপনার Message লিখুন..."
+                    rows="7"
+                    required></textarea>
+
+
+                <button type="submit">
+                    🚀 Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ -->
+<section class="section learning-section">
+
+    <div class="section-heading">
+
+        <h2>
+            ❓ কী ধরনের message পাঠাতে পারেন?
+        </h2>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card step-card">
+
+            <div class="icon">
+                🐞
+            </div>
+
+            <h3>
+                Website Problem
+            </h3>
+
+            <p>
+                কোনো page বা feature কাজ না করলে
+                সমস্যাটি জানাতে পারেন।
+            </p>
+
+        </div>
+
+
+        <div class="card step-card">
+
+            <div class="icon">
+                💡
+            </div>
+
+            <h3>
+                Suggestion
+            </h3>
+
+            <p>
+                Website আরও useful করার জন্য
+                আপনার idea share করতে পারেন।
+            </p>
+
+        </div>
+
+
+        <div class="card step-card">
+
+            <div class="icon">
+                📚
+            </div>
+
+            <h3>
+                Learning Question
+            </h3>
+
+            <p>
+                AI বা technology learning সম্পর্কে
+                প্রশ্ন পাঠাতে পারেন।
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>
+        🚀 শেখা চালিয়ে যান
+    </h2>
+
+    <p>
+        AI Tools এবং Tutorials থেকে
+        আপনার learning journey চালিয়ে যান।
+    </p>
+
+    <div class="buttons">
+
+        <a class="btn primary" href="/tools">
+            🤖 AI Tools
+        </a>
+
+        <a class="btn secondary" href="/tutorials">
+            📚 Tutorials
+        </a>
+
+    </div>
 
 </section>
 

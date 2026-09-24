@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Edit AI Tool - AI Zone বাংলা{% endblock %}
+
+{% block content %}
+
+<section class="page-header admin-header">
+
+    <div class="tool-big-icon">✏️</div>
+
+    <h1>Edit AI Tool</h1>
+
+    <p>{{ tool['name'] }} পরিবর্তন করুন</p>
+
+    <div class="admin-actions">
+        <a class="btn secondary" href="/admin/tools">
+            ← Manage Tools
+        </a>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="auth-box admin-form-box">
+
+        <form method="POST">
+
+            <label for="name">🤖 Tool Name</label>
+            <input
+                id="name"
+                type="text"
+                name="name"
+                value="{{ tool['name'] }}"
+                required
+            >
+
+            <label for="slug">🔗 Slug</label>
+            <input
+                id="slug"
+                type="text"
+                name="slug"
+                value="{{ tool['slug'] }}"
+                required
+            >
+
+            <label for="category">📂 Category</label>
+            <input
+                id="category"
+                type="text"
+                name="category"
+                value="{{ tool['category'] }}"
+                required
+            >
+
+            <label for="icon">😀 Icon</label>
+            <input
+                id="icon"
+                type="text"
+                name="icon"
+                value="{{ tool['icon'] }}"
+                maxlength="10"
+            >
+
+            <label for="description">📝 Description</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="5"
+                required
+            >{{ tool['description'] }}</textarea>
+
+            <label for="affiliate_url">🌐 Official URL</label>
+            <input
+                id="affiliate_url"
+                type="url"
+                name="affiliate_url"
+                value="{{ tool['affiliate_url'] if tool['affiliate_url'] != '#' else '' }}"
+                placeholder="https://example.com/"
+            >
+
+            <button type="submit">
+                💾 Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

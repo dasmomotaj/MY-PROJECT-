@@ -1,48 +1,84 @@
 {% extends "base.html" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
-<h1>👤 Register</h1>
+
+    <h1>👤 Create Account</h1>
+
+    <p>
+        AI Zone বাংলায় নতুন account তৈরি করুন
+    </p>
+
 </section>
+
 
 <section class="section">
 
-<div class="auth-box">
+    <div class="auth-box">
 
-<form method="POST">
+        <form method="POST">
 
-<input
-name="username"
-placeholder="Username"
-required>
+            <label for="username">
+                👤 Username
+            </label>
 
-<input
-type="email"
-name="email"
-placeholder="Email"
-required>
+            <input
+                id="username"
+                type="text"
+                name="username"
+                placeholder="আপনার Username"
+                autocomplete="username"
+                required>
 
-<input
-type="password"
-name="password"
-placeholder="Password - minimum 6 characters"
-required>
 
-<button type="submit">
-Create Account
-</button>
+            <label for="email">
+                📧 Email
+            </label>
 
-</form>
+            <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="আপনার Email"
+                autocomplete="email"
+                required>
 
-<p>
-Already registered?
-<a href="/login">Login</a>
-</p>
 
-</div>
+            <label for="password">
+                🔑 Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="কমপক্ষে 6 characters"
+                minlength="6"
+                autocomplete="new-password"
+                required>
+
+
+            <button type="submit">
+                🚀 Create Account
+            </button>
+
+        </form>
+
+
+        <p class="auth-footer">
+
+            ইতিমধ্যে Account আছে?
+
+            <a href="/login">
+                Login করুন
+            </a>
+
+        </p>
+
+    </div>
 
 </section>
 

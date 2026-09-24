@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Add AI Tool - AI Zone বাংলা{% endblock %}
+
+{% block content %}
+
+<section class="page-header admin-header">
+
+    <div class="tool-big-icon">➕</div>
+
+    <h1>Add New AI Tool</h1>
+
+    <p>AI Zone বাংলা-তে নতুন Tool যোগ করুন</p>
+
+    <div class="admin-actions">
+        <a class="btn secondary" href="/admin/tools">
+            ← Manage Tools
+        </a>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="auth-box admin-form-box">
+
+        <form method="POST">
+
+            <label for="name">🤖 Tool Name</label>
+            <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder="যেমন: My AI Tool"
+                required
+            >
+
+            <label for="slug">🔗 Slug</label>
+            <input
+                id="slug"
+                type="text"
+                name="slug"
+                placeholder="যেমন: my-ai-tool"
+                required
+            >
+
+            <label for="category">📂 Category</label>
+            <input
+                id="category"
+                type="text"
+                name="category"
+                placeholder="যেমন: AI Tools"
+                required
+            >
+
+            <label for="icon">😀 Icon</label>
+            <input
+                id="icon"
+                type="text"
+                name="icon"
+                value="🤖"
+                maxlength="10"
+            >
+
+            <label for="description">📝 Description</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="Tool সম্পর্কে ছোট একটি description লিখুন..."
+                required
+            ></textarea>
+
+            <label for="affiliate_url">🌐 Official URL</label>
+            <input
+                id="affiliate_url"
+                type="url"
+                name="affiliate_url"
+                placeholder="https://example.com/"
+            >
+
+            <button type="submit">
+                ➕ Add Tool
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

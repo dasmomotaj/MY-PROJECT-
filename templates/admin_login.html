@@ -1,37 +1,49 @@
 {% extends "base.html" %}
 
-{% block title %}Admin Login{% endblock %}
+{% block title %}Admin Login - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
 <section class="page-header">
-
-<h1>🔐 Admin Login</h1>
-
-<p>Private administrator area</p>
-
+    <div class="tool-big-icon">🔐</div>
+    <h1>Admin Login</h1>
+    <p>AI Zone বাংলা administrator area</p>
 </section>
 
 <section class="section">
+    <div class="auth-box admin-login-box">
 
-<div class="auth-box">
+        <div class="admin-login-icon">🛡️</div>
 
-<form method="POST">
+        <h2>Administrator Access</h2>
+        <p class="auth-description">
+            Admin dashboard-এ প্রবেশ করতে আপনার password দিন।
+        </p>
 
-<input
-type="password"
-name="password"
-placeholder="Admin Password"
-required>
+        <form method="POST">
 
-<button type="submit">
-Login
-</button>
+            <label for="password">🔑 Admin Password</label>
 
-</form>
+            <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Admin Password"
+                autocomplete="current-password"
+                required
+            >
 
-</div>
+            <button type="submit">
+                🔐 Login to Admin
+            </button>
 
+        </form>
+
+        <p class="auth-footer">
+            <a href="/">← Back to Website</a>
+        </p>
+
+    </div>
 </section>
 
 {% endblock %}

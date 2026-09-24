@@ -1,48 +1,141 @@
 {% extends "base.html" %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}Blog - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
+<!-- PAGE HEADER -->
 <section class="page-header">
 
-<h1>📰 AI Zone বাংলা Blog</h1>
+    <div class="tool-big-icon">
+        📰
+    </div>
 
-<p>AI ও Technology নিয়ে সহজ বাংলা articles</p>
+    <h1>AI Zone বাংলা Blog</h1>
+
+    <p>
+        AI, Technology এবং Digital Skills নিয়ে
+        সহজ বাংলায় গুরুত্বপূর্ণ লেখা।
+    </p>
 
 </section>
 
+
+<!-- BLOG POSTS -->
 <section class="section">
 
-{% for post in posts %}
+    <div class="section-heading">
 
-<div class="card blog-card">
+        <h2>📚 Latest Articles</h2>
 
-<h2>{{ post['title'] }}</h2>
+        <p>
+            নতুন নতুন article পড়ুন এবং
+            নিজের knowledge বাড়ান।
+        </p>
 
-<p>
-{{ post['content'] }}
-</p>
+    </div>
 
-<small>
-{{ post['created_at'] }}
-</small>
 
-</div>
+    {% if posts %}
 
-{% else %}
+        <div class="blog-grid">
 
-<div class="card">
+            {% for post in posts %}
 
-<h3>🚀 প্রথম Blog শীঘ্রই আসছে</h3>
+                <article class="card blog-card">
 
-<p>
-Admin dashboard থেকে Blog post তৈরি করা যাবে।
-</p>
+                    <div class="blog-icon">
+                        📝
+                    </div>
 
-</div>
+                    <span class="tag">
+                        AI & Technology
+                    </span>
 
-{% endfor %}
+                    <h2>
+                        {{ post['title'] }}
+                    </h2>
+
+                    <p class="blog-excerpt">
+                        {{ post['content'] }}
+                    </p>
+
+                    <div class="blog-meta">
+
+                        <span>
+                            📅 {{ post['created_at'] }}
+                        </span>
+
+                    </div>
+
+                    <div class="blog-footer">
+
+                        <span>
+                            📖 AI Zone বাংলা
+                        </span>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <!-- EMPTY STATE -->
+
+        <div class="empty-state blog-empty">
+
+            <div class="empty-icon">
+                📰
+            </div>
+
+            <h2>
+                প্রথম Blog শীঘ্রই আসছে
+            </h2>
+
+            <p>
+                AI Zone বাংলায় খুব শীঘ্রই
+                নতুন নতুন AI ও Technology article
+                প্রকাশ করা হবে।
+            </p>
+
+            <a class="btn primary" href="/tools">
+                🤖 AI Tools দেখুন
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+
+<!-- BLOG CTA -->
+<section class="cta">
+
+    <h2>
+        🤖 AI সম্পর্কে আরও শিখুন
+    </h2>
+
+    <p>
+        AI Tools দেখুন, Tutorials পড়ুন এবং
+        ধাপে ধাপে নিজের skills তৈরি করুন।
+    </p>
+
+    <div class="buttons">
+
+        <a class="btn primary" href="/tools">
+            🤖 Explore AI Tools
+        </a>
+
+        <a class="btn secondary" href="/tutorials">
+            📚 Tutorials
+        </a>
+
+    </div>
 
 </section>
 

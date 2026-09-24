@@ -6,3 +6,6 @@ secret.key
 
 ai_zone.db
 test_project.py
+
+ai_zone_backup.db
+app_backup.py

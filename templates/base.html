@@ -6,21 +6,26 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-content="AI Zone বাংলা — AI Tools, Technology, Web Development এবং Digital Skills শেখার বাংলা platform.">
+      content="AI Zone বাংলা — AI Tools, ChatGPT, Technology, Web Development এবং Digital Skills শেখার বাংলা platform.">
 
 <meta name="keywords"
-content="AI Zone বাংলা, AI Tools, ChatGPT, AI Tutorial, Technology, Web Development, Digital Skills">
+      content="AI Zone বাংলা, AI Tools, ChatGPT, AI Tutorial, Technology, Web Development, Digital Skills">
 
 <meta name="author"
-content="AI Zone বাংলা">
+      content="AI Zone বাংলা">
 
-<title>{% block title %}AI Zone বাংলা — AI & Digital Skills{% endblock %}</title>
+<meta name="theme-color"
+      content="#0f172a">
+
+<title>
+{% block title %}AI Zone বাংলা — AI & Digital Skills{% endblock %}
+</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+      href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
@@ -32,7 +37,9 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <header class="navbar">
 
-<a class="logo" href="/">
+<a class="logo"
+   href="/"
+   aria-label="AI Zone বাংলা Home">
 
 <span class="logo-icon">🤖</span>
 
@@ -44,15 +51,18 @@ AI Zone <span>বাংলা</span>
 
 
 <button class="menu-btn"
-onclick="toggleMenu()"
-aria-label="Open menu">
+        onclick="toggleMenu()"
+        aria-label="Open navigation menu"
+        aria-controls="navMenu"
+        aria-expanded="false">
 
 ☰
 
 </button>
 
 
-<nav id="navMenu">
+<nav id="navMenu"
+     aria-label="Main navigation">
 
 <a href="/">🏠 Home</a>
 
@@ -64,18 +74,20 @@ aria-label="Open menu">
 
 <a href="/services">🛠️ Services</a>
 
+<a href="/monetization">💰 Monetization</a>
+
 
 {% if session.get("user_id") %}
 
 <a href="/profile">👤 Profile</a>
 
-<a href="/logout">Logout</a>
+<a href="/logout">🚪 Logout</a>
 
 {% else %}
 
-<a href="/login">Login</a>
+<a href="/login">🔐 Login</a>
 
-<a href="/register">Register</a>
+<a href="/register">📝 Register</a>
 
 {% endif %}
 
@@ -84,8 +96,8 @@ aria-label="Open menu">
 
 
 <button class="theme-btn"
-onclick="toggleTheme()"
-aria-label="Toggle theme">
+        onclick="toggleTheme()"
+        aria-label="Toggle dark and light theme">
 
 🌙
 
@@ -107,7 +119,8 @@ aria-label="Toggle theme">
 
 {% for category, message in messages %}
 
-<div class="flash {{ category }}">
+<div class="flash {{ category }}"
+     role="alert">
 
 {{ message }}
 
@@ -123,7 +136,7 @@ aria-label="Toggle theme">
 
 
 
-<!-- ================= MAIN ================= -->
+<!-- ================= MAIN CONTENT ================= -->
 
 <main>
 
@@ -158,17 +171,19 @@ AI শেখা • Technology • Web Development • Social Media • Digital 
 
 <div class="footer-links">
 
-<a href="/tools">AI Tools</a>
+<a href="/tools">🤖 AI Tools</a>
 
-<a href="/tutorials">Tutorials</a>
+<a href="/tutorials">📚 Tutorials</a>
 
-<a href="/blog">Blog</a>
+<a href="/blog">📰 Blog</a>
 
-<a href="/services">Services</a>
+<a href="/services">🛠️ Services</a>
 
 <a href="/monetization">💰 Monetization</a>
 
-<a href="/contact">Contact</a>
+<a href="/about">ℹ️ About</a>
+
+<a href="/contact">📩 Contact</a>
 
 </div>
 

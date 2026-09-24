@@ -1,127 +1,288 @@
 {% extends "base.html" %}
 
-{% block title %}Admin Dashboard{% endblock %}
+{% block title %}Admin Dashboard - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
-<section class="page-header">
+<!-- ADMIN HEADER -->
+<section class="page-header admin-header">
 
-<h1>📊 Admin Dashboard</h1>
+    <div class="tool-big-icon">
+        📊
+    </div>
 
-<p>
-<a href="/admin/logout">Logout</a>
-</p>
+    <h1>
+        Admin Dashboard
+    </h1>
+
+    <p>
+        AI Zone বাংলা website management panel
+    </p>
+
+    <div class="admin-actions">
+
+        <a class="btn secondary" href="/" target="_blank">
+            🌐 View Website
+        </a>
+
+        <a class="btn" href="/admin/logout">
+            🚪 Logout
+        </a>
+
+    </div>
 
 </section>
 
+
 <section class="section">
 
-<div class="stats">
 
-<div>
-<strong>{{ users }}</strong>
-<span>Users</span>
-</div>
+    <!-- STATS -->
+    <div class="admin-stats">
 
-<div>
-<strong>{{ visits }}</strong>
-<span>Page Visits</span>
-</div>
+        <div class="admin-stat">
 
-<div>
-<strong>{{ messages }}</strong>
-<span>Messages</span>
-</div>
+            <div class="admin-stat-icon">
+                👥
+            </div>
 
-</div>
+            <strong>
+                {{ users }}
+            </strong>
 
+            <span>
+                Users
+            </span>
 
-<h2 style="margin-top:50px;">
-🔗 Affiliate Clicks
-</h2>
-
-<div class="cards">
-
-{% for tool in clicks %}
-
-<div class="card">
-
-<h3>
-{{ tool['name'] }}
-</h3>
-
-<p>
-Clicks: <strong>{{ tool['clicks'] }}</strong>
-</p>
-
-</div>
-
-{% endfor %}
-
-</div>
+        </div>
 
 
-<h2 style="margin-top:50px;">
-📰 Create Blog Post
-</h2>
+        <div class="admin-stat">
 
-<div class="auth-box">
+            <div class="admin-stat-icon">
+                👁️
+            </div>
 
-<form method="POST"
-action="/admin/blog">
+            <strong>
+                {{ visits }}
+            </strong>
 
-<input
-name="title"
-placeholder="Blog Title"
-required>
+            <span>
+                Page Visits
+            </span>
 
-<textarea
-name="content"
-rows="8"
-placeholder="Blog content"
-required></textarea>
-
-<button type="submit">
-Publish Blog
-</button>
-
-</form>
-
-</div>
+        </div>
 
 
-<h2 style="margin-top:50px;">
-📩 Recent Messages
-</h2>
+        <div class="admin-stat">
 
-{% for message in recent_messages %}
+            <div class="admin-stat-icon">
+                📩
+            </div>
 
-<div class="card"
-style="margin-top:15px;">
+            <strong>
+                {{ messages }}
+            </strong>
 
-<h3>
-{{ message['name'] }}
-</h3>
+            <span>
+                Messages
+            </span>
 
-<p>
-{{ message['email'] }}
-</p>
+        </div>
 
-<p>
-{{ message['message'] }}
-</p>
+    </div>
 
-<small>
-{{ message['created_at'] }}
-</small>
 
-</div>
+    <!-- AFFILIATE CLICKS -->
+    <div class="admin-section">
 
-{% else %}
+        <div class="admin-section-title">
 
-<p>কোনো message নেই।</p>
+            <div>
+                <h2>
+                    🔗 Affiliate Clicks
+                </h2>
 
-{% endfor %}
+                <p>
+                    কোন Tool কতবার visit করা হয়েছে।
+                </p>
+            </div>
+
+        </div>
+
+
+        {% if clicks %}
+
+            <div class="cards">
+
+                {% for tool in clicks %}
+
+                    <div class="card click-card">
+
+                        <div class="icon">
+                            🔗
+                        </div>
+
+                        <h3>
+                            {{ tool['name'] }}
+                        </h3>
+
+                        <div class="click-count">
+                            {{ tool['clicks'] }}
+                        </div>
+
+                        <p>
+                            Total Clicks
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+                <div class="empty-icon">🔗</div>
+                <h3>No clicks yet</h3>
+                <p>Tool visit হলে এখানে statistics দেখা যাবে।</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- CREATE BLOG -->
+    <div class="admin-section">
+
+        <div class="admin-section-title">
+
+            <div>
+                <h2>
+                    📰 Create Blog Post
+                </h2>
+
+                <p>
+                    নতুন article publish করুন।
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="auth-box admin-form-box">
+
+            <form method="POST"
+                  action="/admin/blog">
+
+                <label for="blog-title">
+                    📝 Blog Title
+                </label>
+
+                <input
+                    id="blog-title"
+                    name="title"
+                    placeholder="Blog Title লিখুন"
+                    required>
+
+
+                <label for="blog-content">
+                    📄 Blog Content
+                </label>
+
+                <textarea
+                    id="blog-content"
+                    name="content"
+                    rows="10"
+                    placeholder="Blog content লিখুন..."
+                    required></textarea>
+
+
+                <button type="submit">
+                    🚀 Publish Blog
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- RECENT MESSAGES -->
+    <div class="admin-section">
+
+        <div class="admin-section-title">
+
+            <div>
+                <h2>
+                    📩 Recent Messages
+                </h2>
+
+                <p>
+                    Website contact form থেকে আসা messages।
+                </p>
+            </div>
+
+        </div>
+
+
+        {% for message in recent_messages %}
+
+            <article class="card message-card">
+
+                <div class="message-top">
+
+                    <div>
+
+                        <h3>
+                            👤 {{ message['name'] }}
+                        </h3>
+
+                        <p class="message-email">
+                            📧 {{ message['email'] }}
+                        </p>
+
+                    </div>
+
+                    <small>
+                        {{ message['created_at'] }}
+                    </small>
+
+                </div>
+
+
+                <div class="message-content">
+
+                    {{ message['message'] }}
+
+                </div>
+
+            </article>
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📩
+                </div>
+
+                <h3>
+                    কোনো message নেই
+                </h3>
+
+                <p>
+                    নতুন message এলে এখানে দেখা যাবে।
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 </section>
 

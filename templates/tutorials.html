@@ -1,58 +1,325 @@
 {% extends "base.html" %}
 
-{% block title %}Tutorials{% endblock %}
+{% block title %}Tutorials - AI Zone বাংলা{% endblock %}
 
 {% block content %}
 
+<!-- PAGE HEADER -->
 <section class="page-header">
 
-<h1>📚 Tutorials</h1>
+    <div class="tool-big-icon">
+        📚
+    </div>
 
-<p>শুরু থেকে শেখার সহজ resources</p>
+    <h1>শিখুন সহজ বাংলায়</h1>
+
+    <p>
+        AI, Web Development এবং Digital Skills
+        একদম শুরু থেকে শেখার সহজ পথ।
+    </p>
 
 </section>
 
+
+<!-- TUTORIALS -->
 <section class="section">
 
-<div class="cards">
+    <div class="section-heading">
 
-<div class="card">
-<div class="icon">🐍</div>
-<h3>Python</h3>
-<p>Python basics এবং ছোট project.</p>
-</div>
+        <div>
+            <h2>🎓 Learning Topics</h2>
 
-<div class="card">
-<div class="icon">🌐</div>
-<h3>HTML & CSS</h3>
-<p>Website structure এবং design.</p>
-</div>
+            <p>
+                আপনার পছন্দের topic নির্বাচন করে
+                শেখা শুরু করুন।
+            </p>
+        </div>
 
-<div class="card">
-<div class="icon">🔥</div>
-<h3>Flask</h3>
-<p>Python দিয়ে web application.</p>
-</div>
+    </div>
 
-<div class="card">
-<div class="icon">🐙</div>
-<h3>GitHub</h3>
-<p>Project version control এবং publishing.</p>
-</div>
 
-<div class="card">
-<div class="icon">📱</div>
-<h3>Termux</h3>
-<p>Android-এ coding environment.</p>
-</div>
+    <div class="cards">
 
-<div class="card">
-<div class="icon">🤖</div>
-<h3>AI Learning</h3>
-<p>AI দিয়ে productivity বাড়ানোর workflow.</p>
-</div>
+        <!-- PYTHON -->
+        <div class="card tutorial-card">
 
-</div>
+            <div class="icon">
+                🐍
+            </div>
+
+            <span class="tag">
+                Programming
+            </span>
+
+            <h3>
+                Python
+            </h3>
+
+            <p>
+                Python-এর basic syntax, variables,
+                conditions, loops এবং ছোট project
+                সম্পর্কে শিখুন।
+            </p>
+
+            <div class="tutorial-level">
+                🟢 Beginner
+            </div>
+
+        </div>
+
+
+        <!-- HTML CSS -->
+        <div class="card tutorial-card">
+
+            <div class="icon">
+                🌐
+            </div>
+
+            <span class="tag">
+                Web Design
+            </span>
+
+            <h3>
+                HTML & CSS
+            </h3>
+
+            <p>
+                Website structure তৈরি এবং CSS দিয়ে
+                সুন্দর responsive design শেখার শুরু।
+            </p>
+
+            <div class="tutorial-level">
+                🟢 Beginner
+            </div>
+
+        </div>
+
+
+        <!-- FLASK -->
+        <div class="card tutorial-card">
+
+            <div class="icon">
+                🔥
+            </div>
+
+            <span class="tag">
+                Web Development
+            </span>
+
+            <h3>
+                Flask
+            </h3>
+
+            <p>
+                Python ব্যবহার করে Flask web application
+                তৈরি করার basic ধারণা শিখুন।
+            </p>
+
+            <div class="tutorial-level">
+                🟡 Beginner+
+            </div>
+
+        </div>
+
+
+        <!-- GITHUB -->
+        <div class="card tutorial-card">
+
+            <div class="icon">
+                🐙
+            </div>
+
+            <span class="tag">
+                Development
+            </span>
+
+            <h3>
+                GitHub
+            </h3>
+
+            <p>
+                Repository, commit, push এবং project
+                publish করার basic workflow শিখুন।
+            </p>
+
+            <div class="tutorial-level">
+                🟢 Beginner
+            </div>
+
+        </div>
+
+
+        <!-- TERMUX -->
+        <div class="card tutorial-card">
+
+            <div class="icon">
+                📱
+            </div>
+
+            <span class="tag">
+                Mobile Coding
+            </span>
+
+            <h3>
+                Termux
+            </h3>
+
+            <p>
+                Android ফোনে command line ব্যবহার করে
+                coding project চালানোর ধারণা নিন।
+            </p>
+
+            <div class="tutorial-level">
+                🟡 Beginner+
+            </div>
+
+        </div>
+
+
+        <!-- AI -->
+        <div class="card tutorial-card">
+
+            <div class="icon">
+                🤖
+            </div>
+
+            <span class="tag">
+                Artificial Intelligence
+            </span>
+
+            <h3>
+                AI Learning
+            </h3>
+
+            <p>
+                AI tools ব্যবহার করে learning,
+                productivity এবং content workflow
+                তৈরি করার পদ্ধতি শিখুন।
+            </p>
+
+            <div class="tutorial-level">
+                🟢 Beginner
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LEARNING PATH -->
+<section class="section learning-section">
+
+    <div class="section-heading">
+
+        <h2>🧭 আপনার Learning Path</h2>
+
+        <p>
+            ধাপে ধাপে এগিয়ে যান।
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card step-card">
+
+            <div class="icon">
+                1️⃣
+            </div>
+
+            <h3>
+                Basics
+            </h3>
+
+            <p>
+                প্রথমে basic concept বুঝুন।
+            </p>
+
+        </div>
+
+
+        <div class="card step-card">
+
+            <div class="icon">
+                2️⃣
+            </div>
+
+            <h3>
+                Practice
+            </h3>
+
+            <p>
+                ছোট ছোট exercise দিয়ে practice করুন।
+            </p>
+
+        </div>
+
+
+        <div class="card step-card">
+
+            <div class="icon">
+                3️⃣
+            </div>
+
+            <h3>
+                Project
+            </h3>
+
+            <p>
+                শেখা বিষয় দিয়ে নিজের project তৈরি করুন।
+            </p>
+
+        </div>
+
+
+        <div class="card step-card">
+
+            <div class="icon">
+                4️⃣
+            </div>
+
+            <h3>
+                Improve
+            </h3>
+
+            <p>
+                Project দেখে ভুল ঠিক করুন এবং নতুন
+                skill যোগ করুন।
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>
+        🚀 শেখা শুরু করতে প্রস্তুত?
+    </h2>
+
+    <p>
+        আগে একটি topic বেছে নিন, তারপর
+        ধাপে ধাপে practice করুন।
+    </p>
+
+    <div class="buttons">
+
+        <a class="btn primary" href="/tools">
+            🤖 AI Tools দেখুন
+        </a>
+
+        <a class="btn secondary" href="/">
+            🏠 Home
+        </a>
+
+    </div>
 
 </section>
 
