@@ -102,7 +102,7 @@ Details →
 {% if tool['affiliate_url'] and tool['affiliate_url'] != '#' %}
 
 <a class="btn"
-href="{{ tool['affiliate_url'] }}"
+href="{{ url_for('affiliate_redirect', slug=tool['slug']) }}"
 target="_blank"
 rel="noopener noreferrer">
 Official Website →

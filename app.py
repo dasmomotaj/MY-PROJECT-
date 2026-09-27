@@ -888,10 +888,14 @@ def affiliate_redirect(slug):
     ).fetchone()
 
     if not tool:
-
         con.close()
-
         return redirect(url_for("tools"))
+
+    url = tool["affiliate_url"]
+
+    if not url or url == "#":
+        con.close()
+        return redirect(url_for("tool_details", slug=slug))
 
     con.execute(
         """
@@ -903,31 +907,9 @@ def affiliate_redirect(slug):
     )
 
     con.commit()
-
-    link = tool["affiliate_url"]
-
     con.close()
 
-    if not link or link == "#":
-
-        flash(
-            "এই tool-এর official/approved link এখনো যোগ করা হয়নি।",
-            "info"
-        )
-
-        return redirect(
-            url_for(
-                "tool_details",
-                slug=slug
-            )
-        )
-
-    return redirect(link)
-
-
-# ==========================================
-# FAVORITE
-# ==========================================
+    return redirect(url)
 
 @app.route(
     "/favorite/<int:tool_id>",
