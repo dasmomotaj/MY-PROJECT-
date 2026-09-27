@@ -41,17 +41,17 @@ Search
 
 <a href="/tools">All</a>
 
-<a href="/tools?pricing=Free">
+<a href="/tools?pricing=Free{% if search %}&q={{ search|urlencode }}{% endif %}">
 🟢 Free
 </a>
 
-<a href="/tools?pricing=Free%20Tier">
+<a href="/tools?pricing=Free%20Tier{% if search %}&q={{ search|urlencode }}{% endif %}">
 🔵 Free Tier
 </a>
 
 {% for category in categories %}
 
-<a href="/tools?category={{ category['category'] }}">
+<a href="/tools?category={{ category['category']|urlencode }}{% if pricing %}&pricing={{ pricing|urlencode }}{% endif %}{% if search %}&q={{ search|urlencode }}{% endif %}">
 {{ category['category'] }}
 </a>
 
