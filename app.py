@@ -740,47 +740,49 @@ def tools():
         ""
     ).strip()
 
+    pricing = request.args.get(
+        "pricing",
+        ""
+    ).strip()
+
     con = db()
 
+    query = """
+        SELECT *
+        FROM tools
+        WHERE 1=1
+    """
+
+    params = []
+
     if search:
-
-        rows = con.execute(
-            """
-            SELECT *
-            FROM tools
-            WHERE name LIKE ?
-               OR category LIKE ?
-               OR description LIKE ?
-            ORDER BY name
-            """,
-            (
-                f"%{search}%",
-                f"%{search}%",
-                f"%{search}%"
+        query += """
+            AND (
+                name LIKE ?
+                OR category LIKE ?
+                OR description LIKE ?
             )
-        ).fetchall()
+        """
+        params.extend([
+            f"%{search}%",
+            f"%{search}%",
+            f"%{search}%"
+        ])
 
-    elif category:
+    if category:
+        query += " AND category = ?"
+        params.append(category)
 
-        rows = con.execute(
-            """
-            SELECT *
-            FROM tools
-            WHERE category = ?
-            ORDER BY name
-            """,
-            (category,)
-        ).fetchall()
+    if pricing:
+        query += " AND pricing = ?"
+        params.append(pricing)
 
-    else:
+    query += " ORDER BY name"
 
-        rows = con.execute(
-            """
-            SELECT *
-            FROM tools
-            ORDER BY name
-            """
-        ).fetchall()
+    rows = con.execute(
+        query,
+        params
+    ).fetchall()
 
     categories = con.execute(
         """
@@ -797,7 +799,8 @@ def tools():
         tools=rows,
         categories=categories,
         search=search,
-        selected_category=category
+        selected_category=category,
+        selected_pricing=pricing
     )
 
 

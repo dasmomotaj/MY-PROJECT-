@@ -8,7 +8,7 @@
 
 <h1>🤖 AI Tools</h1>
 
-<p>AI tools খুঁজুন এবং ব্যবহার সম্পর্কে জানুন</p>
+<p>Free এবং Free Tier AI tools খুঁজুন ও ব্যবহার করুন</p>
 
 </section>
 
@@ -22,15 +22,32 @@ name="q"
 value="{{ search }}"
 placeholder="🔍 Tool খুঁজুন...">
 
+{% if selected_category %}
+<input type="hidden" name="category" value="{{ selected_category }}">
+{% endif %}
+
+{% if selected_pricing %}
+<input type="hidden" name="pricing" value="{{ selected_pricing }}">
+{% endif %}
+
 <button type="submit">
 Search
 </button>
 
 </form>
 
+
 <div class="category-row">
 
 <a href="/tools">All</a>
+
+<a href="/tools?pricing=Free">
+🟢 Free
+</a>
+
+<a href="/tools?pricing=Free%20Tier">
+🔵 Free Tier
+</a>
 
 {% for category in categories %}
 
@@ -41,6 +58,7 @@ Search
 {% endfor %}
 
 </div>
+
 
 <div class="cards">
 
@@ -64,12 +82,33 @@ Search
 {{ tool['category'] }}
 </span>
 
+<span class="tag">
+{% if tool['pricing'] == 'Free' %}
+🟢 Free
+{% elif tool['pricing'] == 'Free Tier' %}
+🔵 Free Tier
+{% else %}
+{{ tool['pricing'] }}
+{% endif %}
+</span>
+
 <br>
 
 <a class="btn primary"
 href="/tool/{{ tool['slug'] }}">
 Details →
 </a>
+
+{% if tool['affiliate_url'] and tool['affiliate_url'] != '#' %}
+
+<a class="btn"
+href="{{ tool['affiliate_url'] }}"
+target="_blank"
+rel="noopener noreferrer">
+Official Website →
+</a>
+
+{% endif %}
 
 </div>
 
