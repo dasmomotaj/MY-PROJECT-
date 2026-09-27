@@ -777,7 +777,10 @@ def tools():
         query += " AND pricing = ?"
         params.append(pricing)
 
-    query += " ORDER BY name"
+    if not search and not category and not pricing:
+        query += " ORDER BY clicks DESC, name"
+    else:
+        query += " ORDER BY name"
 
     rows = con.execute(
         query,
