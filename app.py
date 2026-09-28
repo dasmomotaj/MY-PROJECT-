@@ -1522,6 +1522,13 @@ def admin_dashboard():
         """
     ).fetchall()
 
+    total_clicks = con.execute(
+        """
+        SELECT COALESCE(SUM(clicks), 0) AS total
+        FROM tools
+        """
+    ).fetchone()["total"]
+
     recent_messages = con.execute(
         """
         SELECT *
@@ -1539,6 +1546,7 @@ def admin_dashboard():
         visits=visits,
         messages=messages,
         tool_count=tool_count,
+        total_clicks=total_clicks,
         clicks=clicks,
         recent_messages=recent_messages
     )
