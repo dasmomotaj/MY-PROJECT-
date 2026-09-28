@@ -795,12 +795,23 @@ def tools():
         """
     ).fetchall()
 
+    popular_tools = con.execute(
+        """
+        SELECT *
+        FROM tools
+        WHERE clicks > 0
+        ORDER BY clicks DESC, name
+        LIMIT 6
+        """
+    ).fetchall()
+
     con.close()
 
     return render_template(
         "tools.html",
         tools=rows,
         categories=categories,
+        popular_tools=popular_tools,
         search=search,
         selected_category=category,
         selected_pricing=pricing
