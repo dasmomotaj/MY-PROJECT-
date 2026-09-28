@@ -24,6 +24,20 @@
             {{ tool['category'] }}
         </span>
 
+        <span class="tag">
+            {% if tool['pricing'] == 'Free' %}
+                🟢 Free
+            {% elif tool['pricing'] == 'Free Tier' %}
+                🔵 Free Tier
+            {% else %}
+                {{ tool['pricing'] }}
+            {% endif %}
+        </span>
+
+        <span class="tag">
+            👆 {{ tool['clicks'] }} clicks
+        </span>
+
         <h2>
             {{ tool['icon'] }} {{ tool['name'] }}
         </h2>
@@ -51,7 +65,7 @@
 
             <a class="btn primary"
                href="/go/{{ tool['slug'] }}">
-                🚀 Visit Tool
+                🚀 Visit Official Website
             </a>
 
             <a class="btn"
