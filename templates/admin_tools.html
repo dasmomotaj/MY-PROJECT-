@@ -44,6 +44,94 @@
     </div>
 
 
+    <!-- TOOL SEARCH + FILTER -->
+
+    <form method="GET" action="/admin/tools" class="tool-filter-form">
+
+        <input
+            type="search"
+            name="q"
+            value="{{ request.args.get('q', '') }}"
+            placeholder="🔎 Tool search করুন..."
+        >
+
+        <select name="category">
+
+            <option value="">
+                সব Category
+            </option>
+
+            {% set selected_category = request.args.get('category', '') %}
+
+            {% for category in tools|map(attribute='category')|unique|sort %}
+                <option
+                    value="{{ category }}"
+                    {% if selected_category == category %}selected{% endif %}
+                >
+                    {{ category }}
+                </option>
+            {% endfor %}
+
+        </select>
+
+
+        <select name="pricing">
+
+            <option value="">
+                সব Pricing
+            </option>
+
+            {% set selected_pricing = request.args.get('pricing', '') %}
+
+            <option
+                value="Free"
+                {% if selected_pricing == 'Free' %}selected{% endif %}
+            >
+                🟢 Free
+            </option>
+
+            <option
+                value="Free Tier"
+                {% if selected_pricing == 'Free Tier' %}selected{% endif %}
+            >
+                🔵 Free Tier
+            </option>
+
+        </select>
+
+
+        <select name="sort">
+
+            {% set selected_sort = request.args.get('sort', 'name') %}
+
+            <option
+                value="name"
+                {% if selected_sort == 'name' %}selected{% endif %}
+            >
+                🔤 Name
+            </option>
+
+            <option
+                value="clicks"
+                {% if selected_sort == 'clicks' %}selected{% endif %}
+            >
+                🔥 Most Clicks
+            </option>
+
+        </select>
+
+
+        <button type="submit" class="btn primary">
+            🔎 Search
+        </button>
+
+        <a href="/admin/tools" class="btn">
+            ✕ Clear
+        </a>
+
+    </form>
+
+
     {% if tools %}
 
     <div class="cards">

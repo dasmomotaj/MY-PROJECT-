@@ -1,11 +1,21 @@
 __pycache__/
 *.pyc
-ai_zone.db
-secret.key
+
+# SQLite database
+*.db
+*.db-*
+
+# Python backups
+app_backup*.py
+app.py.*-backup
+*.backup
+
+# Template backups
+templates/*_backup*.html
+templates/*.bak
+templates/*.backup
+
+# Environment / secrets
 .env
-
-ai_zone.db
-test_project.py
-
-ai_zone_backup.db
-app_backup.py
+.env.*
+secret.key

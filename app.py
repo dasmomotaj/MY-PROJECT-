@@ -1560,14 +1560,56 @@ def admin_dashboard():
 @admin_required
 def admin_tools():
 
+    search = request.args.get("q", "").strip()
+    category = request.args.get("category", "").strip()
+    pricing = request.args.get("pricing", "").strip()
+    sort = request.args.get("sort", "name").strip()
+
     con = db()
 
-    tools = con.execute(
-        """
+    query = """
         SELECT *
         FROM tools
-        ORDER BY name
+        WHERE 1=1
+    """
+
+    params = []
+
+    if search:
+        query += """
+            AND (
+                name LIKE ?
+                OR category LIKE ?
+                OR description LIKE ?
+                OR slug LIKE ?
+            )
         """
+
+        search_value = f"%{search}%"
+
+        params.extend([
+            search_value,
+            search_value,
+            search_value,
+            search_value
+        ])
+
+    if category:
+        query += " AND category = ?"
+        params.append(category)
+
+    if pricing:
+        query += " AND pricing = ?"
+        params.append(pricing)
+
+    if sort == "clicks":
+        query += " ORDER BY clicks DESC, name"
+    else:
+        query += " ORDER BY name"
+
+    tools = con.execute(
+        query,
+        params
     ).fetchall()
 
     con.close()
@@ -1578,8 +1620,6 @@ def admin_tools():
     )
 
 
-# ==========================================
-# ADMIN DELETE TOOL
 @app.route("/admin/tools/delete/<int:tool_id>", methods=["POST"])
 @admin_required
 def admin_delete_tool(tool_id):
