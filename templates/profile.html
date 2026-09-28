@@ -63,10 +63,45 @@
                         {{ tool['category'] }}
                     </span>
 
+                    <span class="tag">
+                        {% if tool['pricing'] == 'Free' %}
+                            🟢 Free
+                        {% elif tool['pricing'] == 'Free Tier' %}
+                            🔵 Free Tier
+                        {% else %}
+                            {{ tool['pricing'] }}
+                        {% endif %}
+                    </span>
+
+                    <span class="tag">
+                        👆 {{ tool['clicks'] }} clicks
+                    </span>
+
+                    <br>
+
                     <a class="btn primary"
-                       href="/tool/{{ tool['slug'] }}">
-                        Open Tool →
+                       href="{{ url_for('tool_details', slug=tool['slug']) }}">
+                        Details →
                     </a>
+
+                    {% if tool['affiliate_url'] and tool['affiliate_url'] != '#' %}
+
+                    <a class="btn"
+                       href="{{ url_for('affiliate_redirect', slug=tool['slug']) }}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        🚀 Official Website
+                    </a>
+
+                    {% endif %}
+
+                    <form method="POST"
+                          action="{{ url_for('favorite', tool_id=tool['id']) }}"
+                          style="display:inline;">
+                        <button type="submit" class="btn">
+                            💔 Remove Favorite
+                        </button>
+                    </form>
 
                 </div>
 
