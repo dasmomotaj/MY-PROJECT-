@@ -44,7 +44,8 @@ else:
 
 app.secret_key = SECRET_KEY
 
-DB = "ai_zone.db"
+DB_DIR = os.getenv("DB_DIR", ".")
+DB = os.path.join(DB_DIR, "ai_zone.db")
 
 
 # ==========================================
