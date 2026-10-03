@@ -45,6 +45,8 @@ else:
 app.secret_key = SECRET_KEY
 
 DB_DIR = os.getenv("DB_DIR", ".")
+DB_PATH = Path(DB_DIR)
+DB_PATH.mkdir(parents=True, exist_ok=True)
 DB = os.path.join(DB_DIR, "ai_zone.db")
 
 
