@@ -1833,7 +1833,7 @@ def robots():
     return (
         "User-agent: *\n"
         "Allow: /\n\n"
-        "Sitemap: /sitemap.xml\n"
+        "Sitemap: https://ai-zone-bangla.pntr.dev/sitemap.xml\n"
     ), 200, {
         "Content-Type": "text/plain"
     }
@@ -1866,7 +1866,7 @@ def sitemap():
     for page in pages:
 
         xml.append(
-            f"<url><loc>{page}</loc></url>"
+            f"<url><loc>https://ai-zone-bangla.pntr.dev{page}</loc></url>"
         )
 
     xml.append("</urlset>")
